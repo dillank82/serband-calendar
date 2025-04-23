@@ -28,6 +28,15 @@ export class SerbandDate {
         this.currentYear = year;
         this.currentMonth = month;
         this.currentDay = day;
+
+        if (this.currentMonth >= 12) {
+            this.currentYear += Math.floor(this.currentMonth/12)
+            this.currentMonth = this.currentMonth % 12
+        }
+        if (this.currentMonth <= -1) {
+            this.currentYear += Math.floor(this.currentMonth/12)
+            this.currentMonth = 12 + this.currentMonth % 12
+        }
     }
     
     private calcDay (day: 'se' | 'ss' | 'fe' | 'ws'): number {
