@@ -1,0 +1,7 @@
+.calendar {
+    display: flex;
+    flex-direction: column;
+    border-style:solid;
+    border-width: 1.5px;
+    border-color: white;
+}

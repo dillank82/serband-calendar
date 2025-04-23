@@ -1,0 +1,10 @@
+.days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 7em);
+    padding: 1em;
+    padding-bottom: 0.25em;
+}
+
+.day-of-week {
+    font-size: 1.75em;
+}
