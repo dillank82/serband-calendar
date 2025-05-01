@@ -1,0 +1,22 @@
+.switcher-current-year {
+    font-size: 1.5em;
+    opacity: 1;
+    border: 1px solid;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+input.switcher-current-year {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    background: transparent;
+    outline: none;
+    width: 53px;
+    height: 35px;
+}
+input.switcher-current-year:focus {
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
