@@ -1,5 +1,6 @@
 import { useDateContext } from '../../../Context/DateContext'
 import { SerbandDate } from '../../../SerbandDate'
+import { YearInput } from '../../YearInput/YearInput'
 import '../Switchers.css'
 
 export const YearSwitcher = () => {
@@ -16,7 +17,7 @@ export const YearSwitcher = () => {
     return(
         <div className='switcher'>
             <div className='btn' onClick={()=>{switchYear('prev')}}>{'<'}</div>
-            <div className='label'>{currentDate.getFullYear()}</div>
+            <YearInput />
             <div className='btn' onClick={()=>{switchYear('next')}}>{'>'}</div>
         </div>
     )
