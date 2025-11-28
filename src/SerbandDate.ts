@@ -24,10 +24,19 @@ export class SerbandDate {
     private currentMonth: number;
     private currentDay: number;
     
-    constructor (year = 1600, month = 6, day = 23) {
+    constructor (year = 1601, month = 1, day = 23) {
         this.currentYear = year;
         this.currentMonth = month;
         this.currentDay = day;
+
+        if (this.currentMonth >= 12) {
+            this.currentYear += Math.floor(this.currentMonth/12)
+            this.currentMonth = this.currentMonth % 12
+        }
+        if (this.currentMonth <= -1) {
+            this.currentYear += Math.floor(this.currentMonth/12)
+            this.currentMonth = 12 + this.currentMonth % 12
+        }
     }
     
     private calcDay (day: 'se' | 'ss' | 'fe' | 'ws'): number {
