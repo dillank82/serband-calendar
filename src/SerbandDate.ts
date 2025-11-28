@@ -45,7 +45,7 @@ export class SerbandDate {
         const ShiftYearsBack: number[] = []
         switch (day) {
             case "se":
-                var year = 1
+                { let year = 1
                 while (year < this.currentYear) {
                     year += 10
                     ShiftYearsBack.push(year)
@@ -56,9 +56,9 @@ export class SerbandDate {
                     return 9
                 } else {
                     return 10
-                }
+                } }
             case "ss":
-                var year = 1
+                { let year = 1
                 while (year < this.currentYear) {
                     year += 53
                     ShiftYearsBack.push(year)
@@ -69,9 +69,9 @@ export class SerbandDate {
                     return 10
                 } else {
                     return 11
-                }
+                } }
             case "fe":
-                var year = 1
+                { let year = 1
                 while (year < this.currentYear) {
                     year += 19
                     ShiftYearsForward.push(year)
@@ -88,9 +88,9 @@ export class SerbandDate {
                     return 4
                 } else {
                     return 3
-                }
+                } }
             case "ws":
-                var year = 1
+                { let year = 1
                 while (year < this.currentYear) {
                     year += 16
                     ShiftYearsForward.push(year)
@@ -101,7 +101,7 @@ export class SerbandDate {
                     return 13
                 } else {
                     return 12
-                }
+                } }
         }
     }
     public getDateString(): string {
@@ -166,7 +166,7 @@ export class SerbandDate {
             if (this.currentMonth == 10) break
             totalDays += 30
             break
-        } while (totalDays=-1)
+        } while (totalDays === -1)
 
         return totalDays
     }

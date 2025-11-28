@@ -1,6 +1,6 @@
 import './DaysPanel.css'
 import { SerbandDate } from '../../SerbandDate'
-import { useDateContext } from '../../Context/DateContext'
+import { useDateContext } from '../../Context/useDateContext'
 
 export const DaysPanel = () => {
     const { currentDate } = useDateContext()
