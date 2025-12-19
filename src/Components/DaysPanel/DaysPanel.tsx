@@ -3,7 +3,7 @@ import { SerbandDate } from '../../SerbandDate'
 import { useDateContext } from '../../Context/useDateContext'
 
 export const DaysPanel = () => {
-    const { currentDate } = useDateContext()
+    const { currentDate, realDate } = useDateContext()
 
     const getFirstDayOfMonth = (date: SerbandDate) => {
         return new SerbandDate(date.getFullYear(), date.getMonth(), 1)
@@ -22,7 +22,7 @@ export const DaysPanel = () => {
         }
 
         for (let day = 1; day <= daysInMonth; day++) {
-            const realDay = currentDate.getFullYear() == new SerbandDate().getFullYear() && currentDate.getMonth() == new SerbandDate().getMonth()
+            const realDay = currentDate.getFullYear() === realDate.getFullYear() && currentDate.getMonth() === realDate.getMonth() && day === realDate.getDay()
             const typeOfDay = () => {
                 const extraDays = Object.values(currentDate.extraDaysInYear())
                 
@@ -40,7 +40,7 @@ export const DaysPanel = () => {
                 }
             }
             days.push(
-                <div className={realDay && day == new SerbandDate().getDay() ? ' real-day' : 'day'} key={day}>
+                <div className={realDay ? ' real-day' : 'day'} key={day}>
                     {typeOfDay()}
                 </div>
             )
