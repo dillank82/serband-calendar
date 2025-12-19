@@ -26,6 +26,7 @@ export const InputForm = ({ placeholderText, onSubmit }: InputFormProps) => {
                 value={inputValue}
                 placeholder={placeholderText}
             />
+            <button type="submit">Подтвердить</button>
         </form>
     )
 }
