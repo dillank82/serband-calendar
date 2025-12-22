@@ -20,6 +20,7 @@ export const RealDayChanger = ({ closeChanger }: { closeChanger: () => void }) =
         } else {
             const newDate = new SerbandDate (realDate.getFullYear(), realDate.getMonth(), realDate.getDay()+daysCount)
             setRealDate(newDate)
+            localStorage.setItem('realDate', JSON.stringify(newDate))
             closeChanger()
         }
 
