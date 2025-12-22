@@ -24,7 +24,7 @@ export const YearInput = () => {
     }
 
     return(
-        <div>
+        <>
             {isEditing ? (
                 <input 
                     type="number"
@@ -43,6 +43,6 @@ export const YearInput = () => {
             )
     
         }
-        </div>
+        </>
     )
 }
