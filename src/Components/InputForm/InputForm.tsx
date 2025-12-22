@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react"
+import './InputForm.css'
 
 interface InputFormProps {
     placeholderText: string
@@ -26,7 +27,7 @@ export const InputForm = ({ placeholderText, onSubmit }: InputFormProps) => {
                 value={inputValue}
                 placeholder={placeholderText}
             />
-            <button type="submit">Подтвердить</button>
+            <button type="submit" className="submit">Подтвердить</button>
         </form>
     )
 }
