@@ -5,7 +5,7 @@ import { InputForm } from "../InputForm/InputForm"
 import './RealDayChanger.css'
 
 export const RealDayChanger = ({ closeChanger }: { closeChanger: () => void }) => {
-    const { realDate, setRealDate } = useDateContext()
+    const { realDate, setRealDate, setDate } = useDateContext()
     const [error, setError] = useState<string | null>(null)
     const placeholderText = error ? error : "Как много дней прошло?"
     const handleSubmit = (value: string) => {
@@ -21,6 +21,7 @@ export const RealDayChanger = ({ closeChanger }: { closeChanger: () => void }) =
             const newDate = new SerbandDate (realDate.getFullYear(), realDate.getMonth(), realDate.getDay()+daysCount)
             setRealDate(newDate)
             localStorage.setItem('realDate', JSON.stringify(newDate))
+            setDate(newDate)
             closeChanger()
         }
 
