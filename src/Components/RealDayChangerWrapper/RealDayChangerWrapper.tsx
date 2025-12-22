@@ -9,10 +9,12 @@ export const RealDayChangerWrapper = () => {
 
     return (
         <>
-            {isChangerOpen
-                ? <RealDayChanger closeChanger={closeChanger} /> 
-                : <ChangeDaysButton openChanger={openChanger} />
-            }
+            <div style={{ display: isChangerOpen ? "block" : 'none' }}>
+                <RealDayChanger closeChanger={closeChanger} />
+            </div>
+            <div style={{ display: isChangerOpen ? "none" : 'block' }}>
+                <ChangeDaysButton openChanger={openChanger} />
+            </div>
         </>
     )
 }
