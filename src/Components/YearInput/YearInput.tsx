@@ -61,7 +61,7 @@ export const YearInput = () => {
     }
 
     return(
-        <div>
+        <>
             <PopoverError
                 message={error}
                 isOpen={isPopoverOpen}
@@ -95,6 +95,6 @@ export const YearInput = () => {
                     {currentDate.getFullYear()}
                 </div>
             )}
-        </div>
+        </>
     )
 }

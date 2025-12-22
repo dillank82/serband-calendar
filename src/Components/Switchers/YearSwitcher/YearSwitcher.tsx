@@ -16,9 +16,9 @@ export const YearSwitcher = () => {
 
     return(
         <div className='switcher'>
-            <div className='btn' onClick={()=>{switchYear('prev')}}>{'<'}</div>
+            <button className='btn' onClick={()=>{switchYear('prev')}}>{'<'}</button>
             <YearInput />
-            <div className='btn' onClick={()=>{switchYear('next')}}>{'>'}</div>
+            <button className='btn' onClick={()=>{switchYear('next')}}>{'>'}</button>
         </div>
     )
 }

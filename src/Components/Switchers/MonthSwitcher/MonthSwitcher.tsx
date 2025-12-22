@@ -36,7 +36,7 @@ export const MonthSwitcher = () => {
 
     return (
         <div className='switcher' ref={switcher}>
-            <div className='btn' onClick={() => { switchMonth('prev') }}>{'<'}</div>
+            <button className='btn' onClick={() => { switchMonth('prev') }}>{'<'}</button>
             <div className="extended-container">
                 {
                     extendedScroll &&
@@ -63,7 +63,7 @@ export const MonthSwitcher = () => {
                     </div>
                 }
             </div>
-            <div className='btn' onClick={() => { switchMonth('next') }}>{'>'}</div>
+            <button className='btn' onClick={() => { switchMonth('next') }}>{'>'}</button>
         </div>
     )
 }
