@@ -24,7 +24,7 @@ export class SerbandDate {
     private currentMonth: number;
     private currentDay: number;
     
-    constructor (year = 1600, month = 6, day = 23) {
+    constructor (year: number, month: number, day: number) {
         this.currentYear = year;
         this.currentMonth = month;
         this.currentDay = day;
@@ -36,6 +36,24 @@ export class SerbandDate {
         if (this.currentMonth <= -1) {
             this.currentYear += Math.floor(this.currentMonth/12)
             this.currentMonth = 12 + this.currentMonth % 12
+        }
+        if (this.currentDay > this.getDaysInMonth()) {
+            let remainingDays = this.currentDay - this.getDaysInMonth()
+            this.currentDay = 0
+            while (remainingDays > 0) {
+                this.currentMonth++
+                if (this.currentMonth >= 12) {
+                    this.currentYear += 1;
+                    this.currentMonth = 0;
+                }
+                if (remainingDays >= this.getDaysInMonth()) {
+                    remainingDays -= this.getDaysInMonth()
+                } else {
+                    this.currentDay = remainingDays
+                    remainingDays = 0
+                }
+            }
+            this.currentDay += remainingDays
         }
     }
     
@@ -171,12 +189,12 @@ export class SerbandDate {
         return totalDays
     }
 
-    public getDaysInMonth(): number {
+    public getDaysInMonth(month = this.currentMonth): number {
         let days = 30
-        if ((this.currentMonth === 11 && this.isLeapYear()) || this.currentMonth === 3 || this.currentMonth === 6 || this.currentMonth === 9) {
+        if ((month === 11 && this.isLeapYear()) || month === 3 || month === 6 || month === 9) {
             days = 31
         }
-        if (this.currentMonth === 0) {
+        if (month === 0) {
             days = 32
         }
         return days

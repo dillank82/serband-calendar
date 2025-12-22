@@ -4,4 +4,6 @@ import { SerbandDate } from "../SerbandDate";
 export interface IDateContext {
     currentDate: SerbandDate
     setDate: Dispatch<SetStateAction<SerbandDate>>
+    realDate: SerbandDate
+    setRealDate: Dispatch<SetStateAction<SerbandDate>>
 }

@@ -1,0 +1,17 @@
+.real-day-changer-container {
+    margin-top: 0.25em;
+    height: 3.15em;
+    width: 21em;
+}
+.real-day-changer-container input,
+.real-day-changer-container form {
+    width: 100%;
+}
+.real-day-changer-container .form-sub-group button {
+    width: 120px;
+}
+.real-day-changer-container .form-sub-group {
+    display: flex;
+    justify-content: center;
+    gap: 0.06em;
+}

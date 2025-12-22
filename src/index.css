@@ -13,6 +13,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -25,4 +35,9 @@ body {
   display: flex;
   cursor: pointer;
   font-size: 4em;
+}
+
+button {
+  border-width: 1px;
+  cursor: pointer;
 }
