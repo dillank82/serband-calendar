@@ -11,6 +11,7 @@ export const RealDayChanger = ({ closeChanger }: { closeChanger: () => void }) =
     const handleSubmit = (value: string) => {
         const daysCount = parseInt(value)
         setError(null)
+        console.log(value)
         if (isNaN(daysCount)) {
             setError('Пожалуйста, введите число')
         } else if (daysCount < 0) {
@@ -30,7 +31,7 @@ export const RealDayChanger = ({ closeChanger }: { closeChanger: () => void }) =
     return (
         <div className="real-day-changer-container">
             <InputForm placeholderText={placeholderText} onSubmit={handleSubmit} error={error}>
-                <button onClick={closeChanger}>Отмена</button>
+                <button type="button" onClick={closeChanger}>Отмена</button>
             </InputForm>
         </div>
     )
