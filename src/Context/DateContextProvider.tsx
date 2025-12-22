@@ -1,9 +1,9 @@
 import { ReactNode, useState } from "react";
-import { SerbandDate } from "../SerbandDate";
 import { DateContext } from "./dateStore";
+import defaultDate from '../data/realDate'
 
 export const DateContextProvider: React.FC<{children: ReactNode}> = ({ children }) => {
-    const [realDate, setRealDate] = useState(new SerbandDate(1601, 1, 24))
+    const [realDate, setRealDate] = useState(defaultDate)
     const [currentDate, setDate] = useState(realDate)
     return (
         <DateContext.Provider value={{ currentDate, setDate, realDate, setRealDate}}>
