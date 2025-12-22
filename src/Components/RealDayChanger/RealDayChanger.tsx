@@ -1,6 +1,7 @@
 import { useDateContext } from "../../Context/useDateContext"
 import { SerbandDate } from "../../SerbandDate"
 import { InputForm } from "../InputForm/InputForm"
+import './RealDayChanger.css'
 
 export const RealDayChanger = ({ closeChanger }: { closeChanger: () => void }) => {
     const { realDate, setRealDate } = useDateContext()
@@ -12,9 +13,9 @@ export const RealDayChanger = ({ closeChanger }: { closeChanger: () => void }) =
     }
 
     return (
-        <div>
+        <div className="real-day-changer-container">
             <InputForm placeholderText="Как много дней прошло?" onSubmit={handleSubmit}/>
-            <button onClick={closeChanger}>X</button>
+            <button onClick={closeChanger}>Отмена</button>
         </div>
     )
 }
