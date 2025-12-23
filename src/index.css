@@ -35,9 +35,13 @@ body {
   display: flex;
   cursor: pointer;
   font-size: 4em;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 button {
   border-width: 1px;
   cursor: pointer;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
