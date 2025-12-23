@@ -10,7 +10,7 @@ export const RealDayChangerWrapper = () => {
     return (
         <>
             <div style={{ display: isChangerOpen ? "block" : 'none' }}>
-                <RealDayChanger closeChanger={closeChanger} />
+                <RealDayChanger closeChanger={closeChanger} isChangerOpen={isChangerOpen} />
             </div>
             <div style={{ display: isChangerOpen ? "none" : 'block' }}>
                 <ChangeDaysButton openChanger={openChanger} />
