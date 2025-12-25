@@ -20,5 +20,5 @@ export type PopoverMessageProps = {
 
 export type PopoverErrorProps = (
     Omit<PopoverMessageProps, 'content' | 'ariaRole' | 'className' | 'children'> 
-    & { message: string }
+    & { message: string, id: string }
 ) 

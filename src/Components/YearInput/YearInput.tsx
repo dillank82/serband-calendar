@@ -60,6 +60,8 @@ export const YearInput = () => {
         }
     }
 
+    const errorId = 'year-input-error-message'
+
     return(
         <>
             <PopoverError
@@ -69,6 +71,7 @@ export const YearInput = () => {
                 arrowRef={arrowRef}
                 context={context}
                 floatingStyles={floatingStyles}
+                id={errorId}
             />
             {isEditing ? (
                 <form
@@ -85,6 +88,7 @@ export const YearInput = () => {
                         onBlur={(event) => handleBlur(event)}
                         autoFocus
                         maxLength={4}
+                        aria-describedby={errorId}
                     />
                 </form>
             ) : (
