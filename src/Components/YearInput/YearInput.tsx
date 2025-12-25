@@ -92,13 +92,13 @@ export const YearInput = () => {
                     />
                 </form>
             ) : (
-                <div 
+                <button 
                     className='label switcher-current-year'
-                    tabIndex={0} onClick={handleEdit}
+                    onClick={handleEdit}
                     ref={refs.setReference}
                 >
                     {currentDate.getFullYear()}
-                </div>
+                </button>
             )}
         </>
     )
