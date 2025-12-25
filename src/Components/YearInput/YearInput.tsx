@@ -76,6 +76,7 @@ export const YearInput = () => {
                     onSubmit={(event) => handleBlur(event)}
                     ref={refs.setReference}
                 >   
+                    <label htmlFor="year-input" className="visually-hidden">Введите год</label>
                     <input
                         id="year-input"
                         type="number"
