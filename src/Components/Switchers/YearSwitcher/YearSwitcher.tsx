@@ -2,6 +2,7 @@ import { useDateContext } from '../../../Context/useDateContext'
 import { SerbandDate } from '../../../SerbandDate'
 import { YearInput } from '../../YearInput/YearInput'
 import '../Switchers.css'
+import './YearSwitcher.css'
 
 export const YearSwitcher = () => {
 
