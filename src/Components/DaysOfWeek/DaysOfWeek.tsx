@@ -3,14 +3,14 @@ import './DaysOfWeek.css'
 export const DaysOfWeek = () => {
 
     return(
-        <ul className='days-of-week'>
-            <li className='day-of-week'>Таи</li>
-            <li className='day-of-week'>Руа</li>
-            <li className='day-of-week'>Тору</li>
-            <li className='day-of-week'>Ва</li>
-            <li className='day-of-week'>Рима</li>
-            <li className='day-of-week'>Оно</li>
-            <li className='day-of-week'>Виту</li>
-        </ul>
+        <tr className='days-of-week'>
+            <th scope='col' className='day-of-week'>Таи</th>
+            <th scope='col' className='day-of-week'>Руа</th>
+            <th scope='col' className='day-of-week'>Тору</th>
+            <th scope='col' className='day-of-week'>Ва</th>
+            <th scope='col' className='day-of-week'>Рима</th>
+            <th scope='col' className='day-of-week'>Оно</th>
+            <th scope='col' className='day-of-week'>Виту</th>
+        </tr>
     )
 }

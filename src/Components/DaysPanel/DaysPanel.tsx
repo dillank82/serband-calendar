@@ -18,7 +18,7 @@ export const DaysPanel = () => {
         let extraCount = 0
 
         for (let i = 0; i < emptyCells; i++) {
-            days.push(<div className="empty-day" key={`empty-${i}`}></div>)
+            days.push(<td className="empty-day" key={`empty-${i}`}></td>)
         }
 
         for (let day = 1; day <= daysInMonth; day++) {
@@ -28,21 +28,23 @@ export const DaysPanel = () => {
                 
                 if (extraDays.some(d => d.month == month && d.day == day)) {
                     let symbol
+                    let name
                     extraDays.forEach(d => {
                         if (d.month == month && d.day === day) {
+                            name = d.name
                             symbol = d.short
                         }
                     })
                     extraCount+=1
-                    return symbol
+                    return { symbol, name }
                 } else {
-                    return day - extraCount
+                    return { symbol: (day - extraCount) }
                 }
             }
             days.push(
-                <div className={realDay ? ' real-day' : 'day'} key={day}>
-                    {typeOfDay()}
-                </div>
+                <td className={realDay ? ' real-day' : 'day'} key={day} aria-label={typeOfDay().name} >
+                    {typeOfDay().symbol}
+                </td>
             )
 
         }
@@ -51,8 +53,8 @@ export const DaysPanel = () => {
     }
 
     return (
-        <div className="days">
+        <tr className="days">
             {renderDays()}
-        </div>
+        </tr>
     )
 }
