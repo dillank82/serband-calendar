@@ -6,13 +6,9 @@ import { ReactNode } from 'react'
 export const Calendar = (): ReactNode => {
 
     return(
-        <table className="calendar">
-            <thead>
-                <DaysOfWeek />
-            </thead>
-            <tbody>
-                <DaysPanel />
-            </tbody>
-        </table>
+        <div className="calendar">
+            <DaysOfWeek />
+            <DaysPanel />
+        </div>
     )
 }
