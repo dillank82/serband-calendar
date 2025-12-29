@@ -8,9 +8,10 @@ import { arrow, autoUpdate, flip, offset, shift, useFloating } from "@floating-u
 export const YearInput = () => {
 
     const {currentDate, setDate} = useDateContext()
+    const currentYear = currentDate.getFullYear()
 
     const [isEditing, setIsEditing] = useState(false)
-    const [inputValue, setInputValue] = useState(currentDate.getFullYear())
+    const [inputValue, setInputValue] = useState(currentYear)
     const [error, setError] = useState('')
     const [isPopoverOpen, setIsPopoverOpen] = useState(false)
 
@@ -34,7 +35,7 @@ export const YearInput = () => {
 
     const handleEdit = () => {
         setIsEditing(true)
-        setInputValue(currentDate.getFullYear())
+        setInputValue(currentYear)
     }
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value
@@ -89,6 +90,7 @@ export const YearInput = () => {
                         autoFocus
                         maxLength={4}
                         aria-describedby={errorId}
+                        aria-invalid={!!error}
                     />
                 </form>
             ) : (
@@ -96,8 +98,9 @@ export const YearInput = () => {
                     className='label switcher-current-year'
                     onClick={handleEdit}
                     ref={refs.setReference}
+                    aria-label={`Год: ${currentYear}. Нажмите для редактирования.`}
                 >
-                    {currentDate.getFullYear()}
+                    {currentYear}
                 </button>
             )}
         </>
