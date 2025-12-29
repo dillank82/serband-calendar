@@ -54,7 +54,7 @@ export const MonthSwitcher = () => {
 
     return (
         <div className='switcher' ref={switcher}>
-            <button className='btn' onClick={() => { switchMonth('prev') }}>{'<'}</button>
+            <button className='btn' aria-label="Предыдущий месяц" onClick={() => { switchMonth('prev') }}>{'<'}</button>
             <div className="extended-container">
                 {
                     extendedScroll &&
@@ -67,8 +67,17 @@ export const MonthSwitcher = () => {
                         </div>
                     </div>
                 }
-                <button className='month current-month' onWheel={(event) => scrollMonth(event)} onClick={() => { if (!extendedScroll) setExtendedScroll(true); else setExtendedScroll(false) }}>
-                    {currentDate.getMonthString()}</button>
+                <button
+                    className='month current-month'
+                    onWheel={(event) => scrollMonth(event)}
+                    onClick={() => {
+                        if (!extendedScroll) setExtendedScroll(true)
+                        else setExtendedScroll(false)
+                    }}
+                    aria-expanded={extendedScroll}
+                >
+                    {currentDate.getMonthString()}
+                </button>
                 {
                     extendedScroll &&
                     <div className="shift-container">
@@ -81,7 +90,7 @@ export const MonthSwitcher = () => {
                     </div>
                 }
             </div>
-            <button className='btn' onClick={() => { switchMonth('next') }}>{'>'}</button>
+            <button className='btn' aria-label="Следующий месяц" onClick={() => { switchMonth('next') }}>{'>'}</button>
         </div>
     )
 }
