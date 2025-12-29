@@ -38,6 +38,7 @@ export const InputForm = ({ placeholderText, onSubmit, children, error, id, labe
                 autoFocus={autoFocus || false}
                 ref={ref}
                 aria-describedby={`${id}-alert`}
+                aria-invalid={!!error}
             />
             <p role="alert" id={`${id}-alert`} className="input-error-message">{error}</p>
             <div className="form-sub-group">
