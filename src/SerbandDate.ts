@@ -153,38 +153,29 @@ export class SerbandDate {
         return SerbandDate.MONTH_NAMES[this.currentMonth]
     }
     
-    public isLeapYear(): boolean {
-        return this.currentYear % 4 === 0
+    public isLeapYear(year: number = this.currentYear): boolean {
+        return year % 4 === 0
     }
 
     private calculateTotalDays(): number {
-        let totalDays = (this.currentYear - 1) * 365 + Math.floor(this.currentYear - 1) / 4 + this.currentDay
+        let leapYearsCount = 0
+        for (let year = 1; year < this.currentYear; year++) {
+            if (this.isLeapYear(year)) {
+                leapYearsCount++
+            }
+        }
+        let totalDays = (this.currentYear - 1) * 365 + leapYearsCount
 
-        do {
-            if (this.currentMonth == 0) break
-            totalDays += 32
-            if (this.currentMonth == 1) break
-            totalDays += 30
-            if (this.currentMonth == 2) break
-            totalDays += 30
-            if (this.currentMonth == 3) break
-            totalDays += 31
-            if (this.currentMonth == 4) break
-            totalDays += 30
-            if (this.currentMonth == 5) break
-            totalDays += 30
-            if (this.currentMonth == 6) break
-            totalDays += 31
-            if (this.currentMonth == 7) break
-            totalDays += 30
-            if (this.currentMonth == 8) break
-            totalDays += 30
-            if (this.currentMonth == 9) break
-            totalDays += 31
-            if (this.currentMonth == 10) break
-            totalDays += 30
-            break
-        } while (totalDays === -1)
+        const daysInMonths = [32, 30, 30, 31, 30, 30, 31, 30, 30, 31, 30, 30]
+        if (this.isLeapYear(this.currentYear)) {
+            daysInMonths[11] += 1
+        }
+
+        for (let month = 0; month < this.currentMonth; month++) {
+            totalDays += daysInMonths[month]
+        }
+
+        totalDays += this.currentDay
 
         return totalDays
     }
