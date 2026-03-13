@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { SerbandDate } from "../../../SerbandDate";
 import '../Switchers.css'
 import './MonthSwitcher.css'
@@ -14,29 +14,47 @@ export const MonthSwitcher = () => {
     }
 
     const [extendedScroll, setExtendedScroll] = useState(false)
-    
-    const switcher = useRef<HTMLDivElement | null>(null)
-    useEffect(()=>{
-        addEventListener('mousedown', (event)=>{if (switcher.current !== event.currentTarget)setExtendedScroll(false)})
-    })
 
-    const switchMonth = (dir: 'next' | 'prev') => {
+    const switcher = useRef<HTMLDivElement | null>(null)
+
+    const switchMonth = useCallback((dir: 'next' | 'prev') => {
         let x = 0
         if (dir == 'next') x = 1
         else if (dir == 'prev') x = -1
         setDate(new SerbandDate(currentDate.getFullYear(), currentDate.getMonth() + x, 1))
-    }
+    }, [currentDate, setDate])
 
-    const scrollMonth = (event: React.WheelEvent<HTMLDivElement>) => {
+    const scrollMonth = (event: React.WheelEvent<HTMLButtonElement>) => {
         let dir: 'next' | 'prev' | undefined
         if (event.deltaY > 0) dir = 'next'
         else if (event.deltaY < 0) dir = 'prev'
         if (dir) switchMonth(dir)
     }
 
+    useEffect(() => {
+        addEventListener('mousedown', (event) => { if (switcher.current !== event.currentTarget) setExtendedScroll(false) })
+    }, [])
+    useEffect(() => {
+        const handleArrowKeys = (event: KeyboardEvent) => {
+            if (event.key === 'ArrowUp') {
+                event.preventDefault()
+                switchMonth('prev')
+            } else if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                switchMonth('next');
+            }
+        }
+
+        window.addEventListener('keydown', handleArrowKeys)
+
+        return () => {
+            window.removeEventListener('keydown', handleArrowKeys)
+        }
+    }, [switchMonth])
+
     return (
         <div className='switcher' ref={switcher}>
-            <div className='btn' onClick={() => { switchMonth('prev') }}>{'<'}</div>
+            <button className='btn' aria-label="Предыдущий месяц" onClick={() => { switchMonth('prev') }}>{'<'}</button>
             <div className="extended-container">
                 {
                     extendedScroll &&
@@ -49,8 +67,17 @@ export const MonthSwitcher = () => {
                         </div>
                     </div>
                 }
-                <div className='month current-month' onWheel={(event) => scrollMonth(event)} onClick={() => {if (!extendedScroll) setExtendedScroll(true); else setExtendedScroll(false)}}>
-                    {currentDate.getMonthString()}</div>
+                <button
+                    className='month current-month'
+                    onWheel={(event) => scrollMonth(event)}
+                    onClick={() => {
+                        if (!extendedScroll) setExtendedScroll(true)
+                        else setExtendedScroll(false)
+                    }}
+                    aria-expanded={extendedScroll}
+                >
+                    {currentDate.getMonthString()}
+                </button>
                 {
                     extendedScroll &&
                     <div className="shift-container">
@@ -63,7 +90,7 @@ export const MonthSwitcher = () => {
                     </div>
                 }
             </div>
-            <div className='btn' onClick={() => { switchMonth('next') }}>{'>'}</div>
+            <button className='btn' aria-label="Следующий месяц" onClick={() => { switchMonth('next') }}>{'>'}</button>
         </div>
     )
 }

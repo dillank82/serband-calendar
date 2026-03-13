@@ -10,11 +10,12 @@ export const PopoverError = ({
     arrowRef,
     floatingStyles,
     context,
-    arrowStyles
+    arrowStyles,
+    id
 }: PopoverErrorProps) => {
     return (
         <PopoverMessage 
-            content={<p>{message}</p>}
+            content={<p id={id}>{message}</p>}
             title={title}
             className="error"
             ariaRole="alert"

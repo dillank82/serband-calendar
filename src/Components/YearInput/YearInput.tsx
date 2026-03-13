@@ -8,9 +8,10 @@ import { arrow, autoUpdate, flip, offset, shift, useFloating } from "@floating-u
 export const YearInput = () => {
 
     const {currentDate, setDate} = useDateContext()
+    const currentYear = currentDate.getFullYear()
 
     const [isEditing, setIsEditing] = useState(false)
-    const [inputValue, setInputValue] = useState(currentDate.getFullYear())
+    const [inputValue, setInputValue] = useState(currentYear)
     const [error, setError] = useState('')
     const [isPopoverOpen, setIsPopoverOpen] = useState(false)
 
@@ -34,7 +35,7 @@ export const YearInput = () => {
 
     const handleEdit = () => {
         setIsEditing(true)
-        setInputValue(currentDate.getFullYear())
+        setInputValue(currentYear)
     }
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value
@@ -60,8 +61,10 @@ export const YearInput = () => {
         }
     }
 
+    const errorId = 'year-input-error-message'
+
     return(
-        <div>
+        <>
             <PopoverError
                 message={error}
                 isOpen={isPopoverOpen}
@@ -69,6 +72,7 @@ export const YearInput = () => {
                 arrowRef={arrowRef}
                 context={context}
                 floatingStyles={floatingStyles}
+                id={errorId}
             />
             {isEditing ? (
                 <form
@@ -76,6 +80,7 @@ export const YearInput = () => {
                     onSubmit={(event) => handleBlur(event)}
                     ref={refs.setReference}
                 >   
+                    <label htmlFor="year-input" className="visually-hidden">Введите год</label>
                     <input
                         id="year-input"
                         type="number"
@@ -84,17 +89,20 @@ export const YearInput = () => {
                         onBlur={(event) => handleBlur(event)}
                         autoFocus
                         maxLength={4}
+                        aria-describedby={errorId}
+                        aria-invalid={!!error}
                     />
                 </form>
             ) : (
-                <div 
+                <button 
                     className='label switcher-current-year'
-                    tabIndex={0} onClick={handleEdit}
+                    onClick={handleEdit}
                     ref={refs.setReference}
+                    aria-label={`Год: ${currentYear}. Нажмите для редактирования.`}
                 >
-                    {currentDate.getFullYear()}
-                </div>
+                    {currentYear}
+                </button>
             )}
-        </div>
+        </>
     )
 }
