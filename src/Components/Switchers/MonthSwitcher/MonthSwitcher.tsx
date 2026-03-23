@@ -15,7 +15,7 @@ export const MonthSwitcher = () => {
 
     const [extendedScroll, setExtendedScroll] = useState(false)
 
-    const switcher = useRef<HTMLDivElement | null>(null)
+    const switcher = useRef<HTMLButtonElement | null>(null)
 
     const switchMonth = useCallback((dir: 'next' | 'prev') => {
         let x = 0
@@ -36,24 +36,25 @@ export const MonthSwitcher = () => {
     }, [])
     useEffect(() => {
         const handleArrowKeys = (event: KeyboardEvent) => {
-            if (event.key === 'ArrowUp') {
-                event.preventDefault()
-                switchMonth('prev')
-            } else if (event.key === 'ArrowDown') {
-                event.preventDefault();
-                switchMonth('next');
+            if (document.activeElement === switcher.current) {
+                if (event.key === 'ArrowUp') {
+                    event.preventDefault()
+                    switchMonth('prev')
+                } else if (event.key === 'ArrowDown') {
+                    event.preventDefault();
+                    switchMonth('next');
+                }
             }
         }
-
         window.addEventListener('keydown', handleArrowKeys)
 
         return () => {
             window.removeEventListener('keydown', handleArrowKeys)
         }
-    }, [switchMonth])
+    }, [switchMonth, switcher])
 
     return (
-        <div className='switcher' ref={switcher}>
+        <div className='switcher'>
             <button className='btn' aria-label="Предыдущий месяц" onClick={() => { switchMonth('prev') }}>{'<'}</button>
             <div className="extended-container">
                 {
@@ -75,6 +76,7 @@ export const MonthSwitcher = () => {
                         else setExtendedScroll(false)
                     }}
                     aria-expanded={extendedScroll}
+                    ref={switcher}
                 >
                     {currentDate.getMonthString()}
                 </button>
