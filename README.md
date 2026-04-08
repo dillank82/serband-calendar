@@ -1,5 +1,7 @@
 # Serband Calendar
 
+[Читать на русском](README.ru.md)
+
 ## Description
 A web application designed to accurately model and visualize a unique calendar system created for an author's fantasy setting.
 
