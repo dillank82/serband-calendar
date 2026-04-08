@@ -1,59 +1,59 @@
 # Serband Calendar
 
-## Описание
-Веб-приложение, разработанное для точного моделирования и визуализации уникальной календарной системы, созданной для авторского фэнтезийного сеттинга.
+## Description
+A web application designed to accurately model and visualize a unique calendar system created for an author's fantasy setting.
 
-## Как запустить
-Команды:
-1) Клонирование репозитория:
+## How to run
+Commands:
+1) Clone repository:
 ```git clone https://github.com/dillank82/serband-calendar.git```
-2) Выбор директории:
+2) Select directory:
 ```cd serband-calendar```
-3) Установка зависимостей: 
+3) Install dependencies: 
 ```npm i```
-4) Локальный запуск:
+4) Local run:
 ```npm run dev```
 
-## Технологии
+## Tech stack
 HTML5, CSS3, JavaScript(ES6+), TypeScript, React, Vite, Vitest.
 
-## Зачем это создано?
-Это приложение было создано для автоматизации расчетов по календарю из D&D сеттинга. Календарь содержит в себе непостоянные дни (аналог високосного года), а также переходящие праздники, которые не учитываются в численном счёте дней внутри месяца. Приложение автоматизирует симуляцию, обеспечивая правдивые данные и визуализацию в привычном и понятном стиле.
+## Motivation
+This application was created to automate calculations on the calendar from the D&D setting. The calendar contains non-constant days (analogous to a leap year), as well as moving holidays that are not taken into account in the numerical count of days within a month. The application automates the simulation, providing accurate data and visualization in a familiar and understandable style.
 
-## Особенности реализации
-- Приложение основано на кастомном классе, реализующем абстракцию даты. Временная шкала внутри класса основана на абсолютном счётчике дней;
-- Использование React Context для инъекции глобального состояния даты, что позволяет избежать prop drilling и обеспечивает реактивную синхронизацию компонентов;
-- Алгоритмическая визуализация сетки календаря, которая включает добавление пустых ячеек в месяц, чтобы дни соответствовали дням недели, а также динамически обрабатывает не-числительные дни, чтобы они не увеличивали число следующих дней;
-- Форма календаря адаптивна благодаря использованию css grid;
-- Критическая логика вычислений покрыта unit-тестами, что обеспечивает высокую предсказуемость работы системы и упрощает дальнейшую поддержку.
+## Features
+- The application is based on a custom class that implements the date abstraction. The timeline within the class is based on an absolute day counter;
+- Using React Context to inject global date state, which avoids prop drilling and ensures reactive synchronization of components;
+- An algorithmic visualization of a calendar grid includes adding empty cells to the month so that the days match the days of the week, and dynamically handles non-numeric days so that they do not increase the number of following days;
+- The calendar form is adaptive due to the use of css grid;
+- Critical calculation logic is covered by unit tests, which ensures high predictability of the system's operation and simplifies further support.
 
-## Что было сложно?
-- Реализация симуляционного подхода через итеративное моделирование для вычисления дат переходящих праздников;
-- Свитчеры представляют собой сложные реактивные компоненты, обрабатывающие различные mouse events и трансформирующиеся для удобства навигации по календарю.
+## Challenges
+- Implementing a simulation approach through iterative modeling to calculate the dates of transitional holidays;
+- Switches are complex reactive components that handle various mouse events and transform for easy navigation through the calendar.
 
-## Использованная календарная система
-### Основные приницпы
-В году 12 месяцев по 30 дней, которые обозначаются числительными.
-Год начинается со первого месяца весны.
-Месяца: Нгакуру, Нгавари, Нгаэре, Раумати, Моана, Марае, Нгахуру, Рау, Ваи, Пуру, Тахоу, Тангата.
-В неделе 7 дней: Таи, Руа, Тору, Ва, Рима, Оно, Виту.
-### Не-числительные дни
-Дополнительные 5 дней - дни весеннего и осеннего равноденствия, летнего и зимнего солнцестояние, а также день для празднования Нового Года (первый день в году).
-Аналог високосного года: раз в 4 года появляется ещё один день, день когда луна и солнце поменяются местами (последний день в году).
-### Циклы перехода праздников
-Первое весеннее равноденствие после 9 Нгакуру. Цикл: через 10 лет - после 8 Нгакуру, ещё через 91 год снова после 8 Нгакуру.
-Первое летнее солнцестояние после 10 Раумати. Цикл: через 53 года - после 9 Раумати, ещё через 60 лет - снова после 9 Раумати.
-Первое осеннее равноденствие после 2 Нгахуру. Цикл: через 19 лет после 3 Нгахуру, через 9 лет - после 1 Нгахуру, через ещё 9 лет - после 3 Нгахуру, через 18 лет - после 1 Нгахуру.
-Первое зимнее солнцестояние после 11 Пуру. Цикл: через 16 лет - после 12 Пуру, ещё через 31 год снова после 12 Пуру.
+## The calendar system used
+### Basic principles
+A year consists of 12 months of 30 days each, which are denoted by numerals.
+A year begins with the first month of spring.
+Months: Ngakuru, Ngawari, Ngaere, Raumati, Moana, Marae, Ngahuru, Rau, Vai, Puru, Tahou, Tangata.
+There are 7 days in a week: Tai, Rua, Toru, Va, Rima, Ono, Vitu.
+### Non-numeric days
+The additional 5 days are the days of spring and autumn equinoxes, summer and winter solstices, as well as the day for celebrating the New Year (the first day of the year).
+An analogue of a leap year: once every 4 years, there is an extra day, the day when the moon and the sun switch places (the last day of the year).
+### Holiday transition cycles
+The first spring equinox after 9 Ngakuru. Cycle: after 10 years - after 8 Ngakuru, after another 91 years again after 8 Ngakuru.
+The first summer solstice after 10 Raumati. Cycle: after 53 years - after 9 Raumati, after another 60 years again after 9 Raumati.
+The first autumn equinox after 2 Ngahuru. Cycle: after 19 years - after 3 Ngahuru, after another 9 years - after 1 Ngahuru, and after another 9 years - after 3 Ngahuru, and after 18 years more - after 1 Ngahuru.
+The first winter solstice after 11 Puru. Cycle: after 16 years - after 12 Puru, after another 31 years again after 12 Puru.
 
-## Руководства
-### Выбор месяца
-Можно переключать месяц с помощью стрелочных кнопок или скроллить колёсиком мыши на названии месяца. Нажатие по названию месяца разворачивает элемент, отображая названия соседних месяцев.
-### Выбор года
-Можно переключать год с помощью стрелочных кнопок. При нажатии на год, элемент можно скроллить или использовать для ввода числа.
+## How-to
+### Choose a month
+You can switch the month using the arrow buttons or scroll the mouse wheel on the month name. Clicking on the month name expands the element, displaying the names of the neighboring months.
+### Choose a year
+You can switch the year using the arrow buttons. When you click on the year, you can scroll or use it to enter a number.
 
-## Будущее
-### Краткосрочное
-Планирую улучшить способы выбора даты для удобства и визуальной стабилизации (функционально и стилистически).
-### Долгосрочное
-Планирую реализовать отзывчивую вёрстку; бэкенд, который поможет реализовать интерфейс для обновления текущей даты, добавления событий прямо в календарь, авторизацию пользователей, которые смогут добавлять в календарь свои локальные события/заметки.
+## Future
+### Short-term
+Planning to improve the date selection methods for convenience and visual stabilization (functionally and stylistically).
+### Long-term
+Planning to implement responsive layout; a backend that will help implement an interface for updating the current date, adding events directly to the calendar, and authorizing users to add their local events/notes to the calendar.
