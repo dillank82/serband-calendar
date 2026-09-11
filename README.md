@@ -5,6 +5,10 @@
 ## Description
 A web application designed to accurately model and visualize a unique calendar system created for an author's fantasy setting.
 
+## Demo
+![controls_demo](./assets/controls.gif)
+![changing_date_demo](./assets/changing_date.gif)
+
 ## How to run
 Commands:
 1) Clone repository:
